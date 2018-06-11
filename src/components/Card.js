@@ -8,10 +8,8 @@ class Card extends Component {
   render() {
     return (
       <div className="card">
-        <article>
           <h3>{this.props.text}</h3>
           <p>{this.props.emoji}</p>
-        </article>
       </div>
     )
   }
