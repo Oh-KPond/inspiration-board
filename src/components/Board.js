@@ -32,7 +32,7 @@ class Board extends Component {
   render() {
     console.log(CARD_DATA);
     return (
-      <div>
+      <div className="board">
         {this.renderCards()}
       </div>
     )
