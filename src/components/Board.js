@@ -5,24 +5,35 @@ import axios from 'axios';
 import './Board.css';
 import Card from './Card';
 import NewCardForm from './NewCardForm';
-import CARD_DATA from '../data/card-data.json';
 
 class Board extends Component {
   constructor() {
     super();
 
     this.state = {
-      cards: CARD_DATA.cards,
+      cards: [],
     };
   }
 
+  componentDidMount() {
+    axios.get('https://inspiration-board.herokuapp.com/boards/katepond/cards')
+    .then((response) => {
+      this.setState({ cards: response.data });
+    })
+    .catch((error) => {
+      this.setState({
+        error: error.message
+      })
+    });
+  }
+
   renderCards = () => {
-    const cardList = this.state.cards.map((card,index) => {
+    const cardList = this.state.cards.map((data) => {
       return (
         <Card
-          key={index}
-          text={card.text}
-          emoji={card.emoji}
+          key={data.card.id}
+          text={data.card.text}
+          emoji={data.card.emoji}
         />
       );
     });
@@ -30,7 +41,6 @@ class Board extends Component {
   }
 
   render() {
-    console.log(CARD_DATA);
     return (
       <div className="board">
         {this.renderCards()}
