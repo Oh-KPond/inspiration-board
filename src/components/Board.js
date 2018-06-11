@@ -17,9 +17,13 @@ class Board extends Component {
   }
 
   render() {
+    console.log(CARD_DATA);
     return (
       <div>
-        Board
+        <Card
+          text={CARD_DATA.cards[0].text}
+          emoji={CARD_DATA.cards[0].emoji}
+          />
       </div>
     )
   }
