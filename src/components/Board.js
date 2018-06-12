@@ -27,6 +27,17 @@ class Board extends Component {
     });
   }
 
+  addCard = (card) => {
+    axios.post('https://inspiration-board.herokuapp.com/boards/katepond/cards')
+    // const cards = this.state.cards;
+    //
+    // cards.push(card);
+    // this.setState({
+    //   cards,
+    // })
+  }
+  
+  
   deleteCard = (id) => {
     axios.delete(`https://inspiration-board.herokuapp.com/boards/katepond/cards/${id}`)
     .then( (response) => {
@@ -40,7 +51,6 @@ class Board extends Component {
         error: error.message
       });
     });
-  }
 
   renderCards = () => {
     const cardList = this.state.cards.map((data,index) => {
@@ -61,6 +71,7 @@ class Board extends Component {
     return (
       <div className="board">
         {this.renderCards()}
+        <NewCardForm addCardCallback={this.addCard} />
       </div>
     )
   }
