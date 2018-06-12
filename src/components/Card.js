@@ -5,6 +5,12 @@ import emoji from 'emoji-dictionary';
 import './Card.css';
 
 class Card extends Component {
+  handleSubmit = (event) => {
+    event.preventDefault();
+
+    this.props.deleteCardCallback(this.props.id);
+  }
+
   render() {
     let displayText;
     let displayEmoji;
@@ -23,6 +29,9 @@ class Card extends Component {
         <article className="card__content">
           {displayText}
           {displayEmoji}
+          <form onSubmit={this.handleSubmit}>
+            <button className="card__delete" type="submit">Delete</button>
+          </form>
         </article>
       </div>
     )
@@ -32,6 +41,8 @@ class Card extends Component {
 Card.propTypes = {
   text: PropTypes.string,
   emoji: PropTypes.string,
+  id: PropTypes.number,
+  deleteCardCallback: PropTypes.func,
 };
 
 export default Card;
