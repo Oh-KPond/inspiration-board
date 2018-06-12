@@ -27,13 +27,30 @@ class Board extends Component {
     });
   }
 
+  deleteCard = (id) => {
+    axios.delete(`https://inspiration-board.herokuapp.com/boards/katepond/cards/${id}`)
+    .then( (response) => {
+    // this.componentWillUnmount(); <---  Is this something I should be using instead
+    console.log(response);
+    // TODO: Add delete successful to a flash message?
+    this.componentDidMount();
+    })
+    .catch((error) => {
+      this.setState({
+        error: error.message
+      });
+    });
+  }
+
   renderCards = () => {
-    const cardList = this.state.cards.map((data) => {
+    const cardList = this.state.cards.map((data,index) => {
       return (
         <Card
-          key={data.card.id}
+          key={index}
           text={data.card.text}
           emoji={data.card.emoji}
+          id={data.card.id}
+          deleteCardCallback={this.deleteCard}
         />
       );
     });
