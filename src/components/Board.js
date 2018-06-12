@@ -36,11 +36,11 @@ class Board extends Component {
     //   cards,
     // })
   }
-  
-  
+
+
   deleteCard = (id) => {
     axios.delete(`https://inspiration-board.herokuapp.com/boards/katepond/cards/${id}`)
-    .then( (response) => {
+    .then((response) => {
     // this.componentWillUnmount(); <---  Is this something I should be using instead
     console.log(response);
     // TODO: Add delete successful to a flash message?
@@ -49,8 +49,9 @@ class Board extends Component {
     .catch((error) => {
       this.setState({
         error: error.message
-      });
+      })
     });
+  }
 
   renderCards = () => {
     const cardList = this.state.cards.map((data,index) => {
@@ -75,7 +76,6 @@ class Board extends Component {
       </div>
     )
   }
-
 }
 
 Board.propTypes = {
