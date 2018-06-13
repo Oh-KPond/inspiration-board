@@ -32,11 +32,11 @@ class Board extends Component {
 
     axios.post('https://inspiration-board.herokuapp.com/boards/katepond/cards', card)
     .then((response) => {
-      cards.push(card);
       this.setState({
         cards,
-        message: 'Successfully Added Inspiration' // for a jsx message peice at the top in another setState maybe
+        message: 'Successfully Added Inspiration'
       });
+    this.componentDidMount();
     })
     .catch((error) => {
       this.setState({
@@ -49,10 +49,11 @@ class Board extends Component {
   deleteCard = (id) => {
     axios.delete(`https://inspiration-board.herokuapp.com/boards/katepond/cards/${id}`)
     .then((response) => {
-    // this.componentWillUnmount(); <---  Is this something I should be using instead
-    console.log(response);
-    // TODO: Add delete successful to a flash message?
-    this.componentDidMount();
+      this.setState({
+        message: 'Successfully Deleted Card'
+      });
+      this.componentDidMount();
+      // this.componentWillUnmount(); <---  Is this something I should be using instead
     })
     .catch((error) => {
       this.setState({
@@ -77,8 +78,21 @@ class Board extends Component {
   }
 
   render() {
+    let errorMessage
+
+    if (this.state.error) {
+      errorMessage = <p>{this.state.error}</p>
+    }
+
+    let message
+
+    if (this.state.message) {
+      message = <p>{this.state.message}</p>
+    }
     return (
       <div className="board">
+        {errorMessage}
+        {message}
         {this.renderCards()}
         <NewCardForm addCardCallback={this.addCard} />
       </div>
