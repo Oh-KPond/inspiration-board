@@ -28,13 +28,21 @@ class Board extends Component {
   }
 
   addCard = (card) => {
-    axios.post('https://inspiration-board.herokuapp.com/boards/katepond/cards')
-    // const cards = this.state.cards;
-    //
-    // cards.push(card);
-    // this.setState({
-    //   cards,
-    // })
+    const cards = this.state.cards;
+
+    axios.post('https://inspiration-board.herokuapp.com/boards/katepond/cards', card)
+    .then((response) => {
+      cards.push(card);
+      this.setState({
+        cards,
+        message: 'Successfully Added Inspiration' // for a jsx message peice at the top in another setState maybe
+      });
+    })
+    .catch((error) => {
+      this.setState({
+        error: error.message
+      })
+    })
   }
 
 

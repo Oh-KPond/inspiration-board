@@ -31,9 +31,13 @@ class NewCardForm extends Component {
   }
 
   onFormSubmit = (event) => {
+    const card = {}
+
+    card.push.this.state
+
     event.preventDefault();
 
-    this.props.addCardCallback(this.state);
+    this.props.addCardCallback(card);
 
     this.clearForm();
   }
