@@ -52,7 +52,7 @@ Create `Card` and `Board` components and use the provided hardcoded data to popu
 - Build the Card component to display a single inspirational quote and optional emoji.
 - Build a `Board` component which renders a list of Cards from hardcoded data
 
-Note there is a package installed called [`emoji-dictionary`](https://github.com/IonicaBizau/emoji-dictionary) which you can elect to use to display the emojis listed.
+Note there is a package installed called [`emoji-dictionary`](https://github.com/IonicaBizau/emoji-dictionary) which you can elect to use to display the emojis listed. The list of emoji most words can be found [`here`](https://github.com/Kikobeats/emojis-keywords/blob/master/index.js)
 
 ## Wave 2
 
