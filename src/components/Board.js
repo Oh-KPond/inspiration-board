@@ -91,9 +91,9 @@ class Board extends Component {
     }
     return (
       <div className="board">
+        {this.renderCards()}
         {errorMessage}
         {message}
-        {this.renderCards()}
         <NewCardForm addCardCallback={this.addCard} />
       </div>
     )

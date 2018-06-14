@@ -29,10 +29,10 @@ class Card extends Component {
         <article className="card__content">
           {displayText}
           {displayEmoji}
-          <form onSubmit={this.handleSubmit}>
-            <button className="card__delete" type="submit">Delete</button>
-          </form>
         </article>
+        <form className="card__delete" onSubmit={this.handleSubmit}>
+          <button className="button" type="submit">x</button>
+        </form>
       </div>
     )
   }
