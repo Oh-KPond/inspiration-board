@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import axios from 'axios';
 
 import './Board.css';
@@ -53,7 +53,7 @@ class Board extends Component {
         message: 'Successfully Deleted Card'
       });
       this.componentDidMount();
-      // this.componentWillUnmount(); <---  Is this something I should be using instead
+      // this.componentWillUnmount(); // <---  Is this something I should be using instead
     })
     .catch((error) => {
       this.setState({
