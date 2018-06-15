@@ -32,10 +32,6 @@ class Board extends Component {
 
     axios.post('https://inspiration-board.herokuapp.com/boards/katepond/cards', card)
     .then((response) => {
-      this.setState({
-        cards,
-        message: 'Successfully Added Inspiration'
-      });
     this.componentDidMount();
     })
     .catch((error) => {
